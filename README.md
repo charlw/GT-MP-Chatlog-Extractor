@@ -6,3 +6,10 @@ Extracts chatlines from GT-MP .log files, placing them into a separate chatlog f
 2) Run GT-MP Chatlog Extractor.exe. In v1.0, this will convert every recognised gamelog that includes chatlines in the folder to chatlogs.
 
 *Optional:* create separate folder and drag the files you wish to convert in alongside the .exe to avoid converting gamelogs that are already converted.
+
+## Installation
+### Compatibility
+This script is designed for Windows platforms.
+### Instructions
+1) Download from releases [location]
+2) Place into file path [path] including chatlog files (stylised GT-MP-YYYY-MM-DD).
