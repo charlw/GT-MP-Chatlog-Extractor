@@ -3,17 +3,19 @@ from re import sub
 from win32api import MessageBox
 import easygui as ui
 
+def nologsError():
+    MessageBox(0, "No logs converted. \n\nEnsure you have selected at least one log from a folder containing logs!", "GT-MP Chatlog Extractor Tool")
+
 def getDirectory():
     path = ui.diropenbox("select file containing logs to convert", pname)
-    if path == None:
-        path = '.' # used as current directory in os lib
-
-    if listdir( path ) == None:
+    if listdir( path ) == []: # if user points to folder containing no files
+        nologsError()
         return [] # blank iterable to skip for loop
-
+    
     r = ui.multchoicebox( "Select the files you wish to convert:", pname, [file for file in listdir( path ) if "GT-MP-" and ".log" in file] )
 
     if r == None:
+        nologsError()
         return []
     
     return r
@@ -62,8 +64,4 @@ for file in getDirectory():
                     else:
                         chatlog.write(line)
 
-
-
-if not any ( "CHATLOG" in filename for filename in listdir(curdir) ):
-    MessageBox(0, "No logs converted. \n\nEnsure you have selected at least one log from a folder containing logs!", "GT-MP Chatlog Extractor Tool")
 
