@@ -1,10 +1,9 @@
 from os import listdir, curdir
 from re import sub
-from win32api import MessageBox
 import easygui as ui
 
 def nologsError():
-    MessageBox(0, "No logs converted. \n\nEnsure you have selected at least one log from a folder containing logs!", "GT-MP Chatlog Extractor Tool")
+    ui.msgbox("No logs converted. \n\nEnsure you have selected at least one log from a folder containing logs!", "GT-MP Chatlog Extractor Tool")
 
 def getDirectory():
     r = ui.multchoicebox( "Select the files you wish to convert:", pname, [file for file in listdir( '.' ) if "GT-MP-" and ".log" in file] )
@@ -60,5 +59,3 @@ for file in getDirectory():
                         chatlog.write(timestamp + line)
                     else:
                         chatlog.write(line)
-
-
